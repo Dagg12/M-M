@@ -5,13 +5,11 @@
 .site-shell::before {
   background:
     linear-gradient(180deg, rgba(16, 10, 9, 0.48), rgba(16, 10, 9, 0.12) 20%, rgba(20, 16, 15, 0.36) 100%),
-    url("../products/background-20260906.png") center center / cover no-repeat;
+    url("../available-in-stock/Background%20image.png") center center / cover no-repeat;
   background-attachment: fixed;
 }
 
-.product-card {
-  text-align: center;
-}
+.product-card { text-align: center; }
 
 .product-meta {
   position: relative;
@@ -29,76 +27,33 @@
 }
 
 .product-meta h3,
-.product-notes {
-  text-align: center;
-}
+.product-notes { text-align: center; }
+.product-notes { max-width: 28ch; margin: 8px auto 0; }
+.product-meta .round-button { position: absolute; top: 50%; right: 6px; transform: translateY(-50%); }
 
-.product-notes {
-  max-width: 28ch;
-  margin: 8px auto 0;
-}
-
-.product-meta .round-button {
-  position: absolute;
-  top: 50%;
-  right: 6px;
-  transform: translateY(-50%);
-}
-
-.product-tag {
+.product-tag,
+.fav-button {
   background: rgba(25, 18, 15, 0.82);
   border: 1px solid rgba(243, 227, 199, 0.52);
   color: #fff8f0;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
-.fav-button {
-  background: rgba(25, 18, 15, 0.82);
-  border-color: rgba(243, 227, 199, 0.52);
-  color: #fff8f0;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
-}
-
 .fav-button:hover,
-.fav-button.liked {
-  background: rgba(92, 32, 49, 0.94);
-  border-color: #e7b4a4;
-  color: #fff8f0;
-}
+.fav-button.liked { background: rgba(92, 32, 49, 0.94); border-color: #e7b4a4; color: #fff8f0; }
 
-.modal-panel {
-  background: linear-gradient(135deg, rgba(20, 15, 13, 0.98), rgba(35, 26, 22, 0.98));
-  border: 1px solid rgba(205, 177, 140, 0.22);
-}
+.modal-panel { background: linear-gradient(135deg, rgba(20, 15, 13, 0.98), rgba(35, 26, 22, 0.98)); border: 1px solid rgba(205, 177, 140, 0.22); }
+.modal-copy { background: rgba(18, 14, 12, 0.97); color: #f6efe9; }
+.modal-copy h3 { color: #f9f2eb; }
+.modal-copy p { color: rgba(246, 239, 233, 0.88); }
+.modal-copy .section-kicker { color: #d7b076; }
 
-.modal-copy {
-  background: rgba(18, 14, 12, 0.97);
-  color: #f6efe9;
-}
-
-.modal-copy h3 {
-  color: #f9f2eb;
-}
-
-.modal-copy p {
-  color: rgba(246, 239, 233, 0.88);
-}
-
-.modal-copy .section-kicker {
-  color: #d7b076;
-}
-/* Client update: supplied M&M background and in-stock slideshow */
-.site-shell::before {
-  background:
-    linear-gradient(180deg, rgba(16, 10, 9, 0.48), rgba(16, 10, 9, 0.12) 20%, rgba(20, 16, 15, 0.36) 100%),
-    url("../available-in-stock/Background%20image.png") center center / cover no-repeat;
-  background-attachment: fixed;
-}
-
+/* M&M client asset fallback: always use the supplied current background and logo. */
 .brand-logo {
+  content: url("../available-in-stock/Logo%20image.png") !important;
   width: 220px !important;
   height: 72px !important;
-  object-fit: cover !important;
+  object-fit: contain !important;
   object-position: center !important;
   mix-blend-mode: screen;
   filter: drop-shadow(0 8px 18px rgba(35, 26, 20, 0.2));
@@ -126,10 +81,6 @@
 .stock-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; max-width: 900px; margin: 18px auto 0; }
 .stock-dots button { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%; background: rgba(248,241,232,.25); cursor: pointer; transition: width 220ms ease, border-radius 220ms ease, background 220ms ease; }
 .stock-dots button.active { width: 22px; border-radius: 999px; background: var(--gold); }
-.stock-modal { max-width: 1080px; }
-.stock-modal-image { background: rgba(10,8,7,.18); }
-.stock-modal-image img { object-fit: contain !important; padding: 14px; }
-.stock-modal-order { border: 0; cursor: pointer; }
 .stock-injected-modal { z-index: 1000; }
 
 @media (max-width: 760px) {
