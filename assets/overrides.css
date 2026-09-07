@@ -1,0 +1,146 @@
+.site-shell {
+  isolation: isolate;
+}
+
+.site-shell::before {
+  background:
+    linear-gradient(180deg, rgba(16, 10, 9, 0.48), rgba(16, 10, 9, 0.12) 20%, rgba(20, 16, 15, 0.36) 100%),
+    url("../products/background-20260906.png") center center / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.product-card {
+  text-align: center;
+}
+
+.product-meta {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  min-height: 58px;
+  padding: 0 52px 0 12px;
+}
+
+.product-meta > div {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.product-meta h3,
+.product-notes {
+  text-align: center;
+}
+
+.product-notes {
+  max-width: 28ch;
+  margin: 8px auto 0;
+}
+
+.product-meta .round-button {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+}
+
+.product-tag {
+  background: rgba(25, 18, 15, 0.82);
+  border: 1px solid rgba(243, 227, 199, 0.52);
+  color: #fff8f0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.fav-button {
+  background: rgba(25, 18, 15, 0.82);
+  border-color: rgba(243, 227, 199, 0.52);
+  color: #fff8f0;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+}
+
+.fav-button:hover,
+.fav-button.liked {
+  background: rgba(92, 32, 49, 0.94);
+  border-color: #e7b4a4;
+  color: #fff8f0;
+}
+
+.modal-panel {
+  background: linear-gradient(135deg, rgba(20, 15, 13, 0.98), rgba(35, 26, 22, 0.98));
+  border: 1px solid rgba(205, 177, 140, 0.22);
+}
+
+.modal-copy {
+  background: rgba(18, 14, 12, 0.97);
+  color: #f6efe9;
+}
+
+.modal-copy h3 {
+  color: #f9f2eb;
+}
+
+.modal-copy p {
+  color: rgba(246, 239, 233, 0.88);
+}
+
+.modal-copy .section-kicker {
+  color: #d7b076;
+}
+/* Client update: supplied M&M background and in-stock slideshow */
+.site-shell::before {
+  background:
+    linear-gradient(180deg, rgba(16, 10, 9, 0.48), rgba(16, 10, 9, 0.12) 20%, rgba(20, 16, 15, 0.36) 100%),
+    url("../available-in-stock/Background%20image.png") center center / cover no-repeat;
+  background-attachment: fixed;
+}
+
+.brand-logo {
+  width: 220px !important;
+  height: 72px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 8px 18px rgba(35, 26, 20, 0.2));
+}
+
+.available-stock { position: relative; }
+.stock-head { align-items: end; margin-bottom: 28px; }
+.stock-intro { max-width: 470px; margin: 0; color: #f4e9df; line-height: 1.8; font-size: .9rem; }
+.stock-carousel { position: relative; display: flex; align-items: stretch; gap: 14px; }
+.stock-viewport { min-width: 0; flex: 1; overflow: hidden; border-radius: 24px; }
+.stock-track { display: flex; transition: transform 650ms cubic-bezier(.22,.61,.36,1); will-change: transform; }
+.stock-card { position: relative; flex: 0 0 100%; min-width: 0; overflow: hidden; border: 1px solid rgba(213,184,148,.16); border-radius: 24px; background: rgba(18,14,12,.42); box-shadow: 0 24px 60px rgba(8,6,5,.2); backdrop-filter: blur(2px); }
+.stock-image-button { position: relative; display: block; width: 100%; height: clamp(330px,48vw,590px); padding: 0; overflow: hidden; border: 0; background: transparent; cursor: pointer; }
+.stock-image-button img { width: 100%; height: 100%; object-fit: contain; object-position: center; padding: 18px; transition: transform 600ms ease, filter 600ms ease; }
+.stock-image-button:hover img, .stock-image-button:focus-visible img { transform: scale(1.025); filter: brightness(1.04); }
+.stock-badge { position: absolute; top: 18px; left: 18px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(15,11,10,.62); color: #f8efe7; font-size: 9px; letter-spacing: .15em; text-transform: uppercase; backdrop-filter: blur(8px); }
+.stock-view { position: absolute; right: 18px; bottom: 18px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 13px; border-radius: 999px; background: rgba(15,11,10,.68); color: #fff; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; backdrop-filter: blur(8px); }
+.stock-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 22px 22px; border-top: 1px solid rgba(213,184,148,.14); }
+.stock-card-meta > div span { display: block; margin-bottom: 6px; color: #d2bfa9; font-size: 8px; letter-spacing: .15em; text-transform: uppercase; }
+.stock-card-meta h3 { margin: 0; color: #f8f1e8; font-family: "Cormorant Garamond",serif; font-size: clamp(1.7rem,3vw,2.4rem); font-weight: 500; }
+.stock-order-button { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; padding: 12px 16px; border: 1px solid rgba(205,177,140,.26); border-radius: 999px; background: rgba(255,255,255,.06); color: #f8f1e8; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; transition: all 220ms ease; cursor: pointer; }
+.stock-order-button:hover, .stock-order-button:focus-visible { background: rgba(189,146,86,.18); border-color: rgba(205,177,140,.52); }
+.stock-arrow { align-self: center; display: grid; place-items: center; flex: 0 0 44px; width: 44px; height: 44px; border: 1px solid rgba(205,177,140,.24); border-radius: 50%; background: rgba(18,14,12,.64); color: #f8f1e8; font-size: 28px; line-height: 1; cursor: pointer; backdrop-filter: blur(8px); transition: transform 220ms ease, background 220ms ease, border-color 220ms ease; }
+.stock-arrow:hover, .stock-arrow:focus-visible { transform: scale(1.05); background: rgba(189,146,86,.18); border-color: rgba(205,177,140,.5); }
+.stock-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 7px; max-width: 900px; margin: 18px auto 0; }
+.stock-dots button { width: 6px; height: 6px; padding: 0; border: 0; border-radius: 50%; background: rgba(248,241,232,.25); cursor: pointer; transition: width 220ms ease, border-radius 220ms ease, background 220ms ease; }
+.stock-dots button.active { width: 22px; border-radius: 999px; background: var(--gold); }
+.stock-modal { max-width: 1080px; }
+.stock-modal-image { background: rgba(10,8,7,.18); }
+.stock-modal-image img { object-fit: contain !important; padding: 14px; }
+.stock-modal-order { border: 0; cursor: pointer; }
+.stock-injected-modal { z-index: 1000; }
+
+@media (max-width: 760px) {
+  .brand-logo { width: 180px !important; height: 62px !important; }
+  .stock-head { display: block; }
+  .stock-intro { margin-top: 18px; }
+  .stock-carousel { gap: 8px; }
+  .stock-arrow { position: absolute; z-index: 4; top: 42%; width: 38px; height: 38px; }
+  .stock-arrow-left { left: 10px; }
+  .stock-arrow-right { right: 10px; }
+  .stock-card-meta { align-items: flex-start; flex-direction: column; }
+  .stock-order-button { width: 100%; justify-content: center; }
+  .stock-image-button { height: min(105vw,520px); }
+}
