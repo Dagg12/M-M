@@ -33,6 +33,11 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Copy website image folders into build
+        run: |
+          cp -R available-in-stock dist/available-in-stock
+          cp -R products dist/products
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
