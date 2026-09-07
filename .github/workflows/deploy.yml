@@ -38,6 +38,9 @@ jobs:
           cp -R available-in-stock dist/available-in-stock
           cp -R products dist/products
 
+      - name: Copy repository assets into build
+        run: cp -R assets/* dist/assets/
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
