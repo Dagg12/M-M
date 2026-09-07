@@ -6,11 +6,139 @@
     <meta name="theme-color" content="#120d0a" />
     <link rel="icon" href="./favicon.svg" />
     <link rel="stylesheet" href="./assets/index-CCr39zXF.css" />
+    <link rel="stylesheet" href="./assets/overrides.css" />
     <meta name="description" content="M&M Fragrance House — a curated fragrance collection crafted for unforgettable moments." />
     <title>M&M Fragrance House</title>
   </head>
   <body>
     <div id="root"></div>
+
+    <script>
+      (function () {
+        const stockProducts = [
+          ["Scandant Homme", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_42_22 PM.png"],
+          ["Lush Cherry", "./available-in-stock/ChatGPT Image Sep 7, 2026, 03_04_00 PM.png"],
+          ["Dolores Pour Femme", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_44_08 PM.png"],
+          ["Dolores Pour Femme", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_44_10 PM.png"],
+          ["Intense Noir", "./available-in-stock/xDvel.jpg"],
+          ["Scandant", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_40_13 PM.png"],
+          ["Elysia", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_59_24 PM.png"],
+          ["Nomad's Land", "./available-in-stock/1NQRa.jpg"],
+          ["Hibiscus Magic", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_57_06 PM.png"],
+          ["Cocktail Intense", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_48_31 PM.png"],
+          ["La Vida Es Bella", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_54_55 PM.png"],
+          ["Forever Wanted", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_52_39 PM.png"],
+          ["Jacques Yves Soleil D'Ombre", "./available-in-stock/PgJJh.jpg"],
+          ["La Vida Es Bella", "./available-in-stock/xaONs.jpg"],
+          ["Montera Instant Love", "./available-in-stock/tdOdk.jpg"],
+          ["Intense Oud", "./available-in-stock/Eauv9.jpg"],
+          ["Nomad's Land", "./available-in-stock/qmoZc.jpg"],
+          ["Intense Oud", "./available-in-stock/kYkkV.jpg"],
+          ["Oud Madness", "./available-in-stock/ChatGPT Image Sep 7, 2026, 03_01_31 PM.png"],
+          ["Away", "./available-in-stock/ChatGPT Image Sep 7, 2026, 02_50_47 PM.png"],
+          ["Tom Ford Pour Homme", "./available-in-stock/Jsubr.jpg"],
+          ["Tool Box Men", "./available-in-stock/T6wwy.jpg"],
+          ["Jacques Yves Soleil D'Ombre", "./available-in-stock/exoaC.jpg"]
+        ];
+
+        function fixLegacyBranding() {
+          const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+          const nodes = [];
+          let node;
+          while ((node = walker.nextNode())) nodes.push(node);
+          nodes.forEach((textNode) => {
+            if (textNode.nodeValue.includes("Nare & Philippine")) {
+              textNode.nodeValue = textNode.nodeValue.replaceAll("Nare & Philippine", "M&M Fragrance House");
+            }
+          });
+        }
+
+        function mountStockSection() {
+          const collection = document.getElementById("collection");
+          if (!collection || document.getElementById("available-stock-fallback")) return !!collection;
+
+          const section = document.createElement("section");
+          section.className = "available-stock section-spacing";
+          section.id = "available-stock-fallback";
+          section.innerHTML = `
+            <div class="section-head stock-head">
+              <div>
+                <div class="section-kicker">Available / In stock</div>
+                <h2>Ready to <span>wear.</span></h2>
+              </div>
+              <p class="stock-intro">Explore the fragrances currently available. Select any bottle to view it larger and order directly through WhatsApp.</p>
+            </div>
+            <div class="stock-carousel" aria-label="Available in stock fragrances">
+              <button class="stock-arrow stock-arrow-left" type="button" aria-label="Previous available fragrance">‹</button>
+              <div class="stock-viewport">
+                <div class="stock-track"></div>
+              </div>
+              <button class="stock-arrow stock-arrow-right" type="button" aria-label="Next available fragrance">›</button>
+            </div>
+            <div class="stock-dots" aria-label="Available fragrance slides"></div>
+          `;
+
+          const track = section.querySelector(".stock-track");
+          const dots = section.querySelector(".stock-dots");
+          let current = 0;
+
+          stockProducts.forEach(([name, image], index) => {
+            const card = document.createElement("article");
+            card.className = "stock-card";
+            card.innerHTML = `
+              <button class="stock-image-button" type="button" aria-label="View ${name}">
+                <img src="${image}" alt="${name}" loading="lazy" />
+                <span class="stock-badge">In stock</span>
+                <span class="stock-view">View fragrance ›</span>
+              </button>
+              <div class="stock-card-meta">
+                <div><span>Available now</span><h3>${name}</h3></div>
+                <a class="stock-order-button" target="_blank" rel="noopener" href="https://wa.me/27824665064?text=${encodeURIComponent("Hello M&M Fragrance House! I would like to order " + name + ". Please confirm availability and price.")}">Order on WhatsApp</a>
+              </div>
+            `;
+            card.querySelector(".stock-image-button").addEventListener("click", () => window.open(image, "_blank", "noopener,noreferrer"));
+            track.appendChild(card);
+
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.setAttribute("aria-label", "Show " + name);
+            dot.addEventListener("click", () => { current = index; update(); });
+            dots.appendChild(dot);
+          });
+
+          function update() {
+            track.style.transform = "translateX(-" + (current * 100) + "%)";
+            [...dots.children].forEach((dot, index) => dot.classList.toggle("active", index === current));
+          }
+
+          section.querySelector(".stock-arrow-left").addEventListener("click", () => {
+            current = (current - 1 + stockProducts.length) % stockProducts.length;
+            update();
+          });
+          section.querySelector(".stock-arrow-right").addEventListener("click", () => {
+            current = (current + 1) % stockProducts.length;
+            update();
+          });
+
+          update();
+          collection.parentNode.insertBefore(section, collection);
+          window.setInterval(() => {
+            current = (current + 1) % stockProducts.length;
+            update();
+          }, 4500);
+          return true;
+        }
+
+        function bootFallbacks() {
+          fixLegacyBranding();
+          if (!mountStockSection()) window.setTimeout(bootFallbacks, 250);
+        }
+
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bootFallbacks);
+        else bootFallbacks();
+      })();
+    </script>
+
     <script type="module" src="./assets/index-D2EDFvop.js"></script>
   </body>
 </html>
