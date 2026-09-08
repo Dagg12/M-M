@@ -41,7 +41,7 @@ The preview below is the **actual desktop screenshot supplied for this project**
 
 ## About the Project
 
-**Nare & Philippine Fragrance House** is a luxury-inspired perfume website created to establish a strong digital presence for the client and provide a direct path from fragrance discovery to customer enquiry.
+**M&M Fragrance House** is a luxury-inspired perfume website created to establish a strong digital presence for the client and provide a direct path from fragrance discovery to customer enquiry.
 
 The project combines:
 
